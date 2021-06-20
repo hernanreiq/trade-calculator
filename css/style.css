@@ -1,0 +1,16 @@
+body {
+    background-image: url('../img/fondo.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+}
+.container {
+    background-color: rgba(0, 0, 0, 0.603);
+    border-radius: 5px;
+    border: solid 3px rgba(255, 255, 255, 0.425);
+}
+input {
+    font-weight: bold;
+    padding-left: 10px;
+}
