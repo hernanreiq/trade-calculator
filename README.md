@@ -1,5 +1,6 @@
 # Trade Calculator
-Calculadora de ganancias para traders, aplicando la fórmula de interés compuesto después de la primera inversión.
+* Calculadora de ganancias para traders, aplicando la fórmula de interés compuesto después de la primera inversión.
+* Calculadora de operaciones binarias necesarias pera llegar a una meta establecida por el usuario, el capital inicial es $100 USD.
 
 ---
 ## Enlace para ver el proyecto
