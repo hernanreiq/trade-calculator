@@ -24,7 +24,7 @@ function limpiador(){
     porcentaje_operaciones_resultados.innerHTML = '0%';
     tabla_resultados.innerHTML = '';
     seccion_resultados.style.display = 'none';
-    alertador(3);
+    alertador(1, 2);
 }
 
 /* CALCULADOR */
@@ -33,10 +33,10 @@ btn_calcular.addEventListener('click', function(){
         if(meta_input.value != capital_input.value){
             determinarPeriodos(meta_input.value, capital_input.value, interes_input.value);
         } else {
-            alertador(4);
+            alertador(0, 3);
         }
     } else {
-        alertador(1);
+        alertador(0, 0);
     }
 });
 
@@ -72,36 +72,29 @@ function detallesResultados(periodos){
         capital_inicial += ganancias_operacion; 
     }
 
-    alertador(2);
+    alertador(1, 1);
 }
 
 /* CREADOR DE ALERTAS PARA DAR FEEDBACK AL USUARIO */
-function alertador(tipo_alerta){
-    contenedor_alertas.style.display = 'block';
-    var color_alerta;
-    var mensaje_alerta;
-    if(tipo_alerta == 1){
-        color_alerta = 'alert-info';
-        mensaje_alerta = 'Debes llenar los campos para poder hacer el cálculo!';
-    } else if (tipo_alerta == 2){
-        color_alerta = 'alert-success';
-        mensaje_alerta = 'Cálculo realizado con éxito!';
-    } else if (tipo_alerta == 3){
-        color_alerta = 'alert-success';
-        mensaje_alerta = 'Campos limpios y listos para hacer un nuevo cálculo!';
-    } else if (tipo_alerta == 4){
-        color_alerta = 'alert-info';
-        mensaje_alerta = 'No hay nada que calcular, tu capital es igual a tu meta!'
+function alertador(id_color, id_mensaje){
+    if(contenedor_alertas.children[0]){
+        contenedor_alertas.innerHTML = '';
     }
-    contenedor_alertas.innerHTML += `
-    <div class="alert ${color_alerta} alert-dismissible fade show my-2" role="alert">
-        <strong>${mensaje_alerta}</strong>
+    contenedor_alertas.style.display = 'block';
+    var colores_alertas = ['alert-info', 'alert-success'];
+    var mensajes_alertas = ['Debes llenar los campos para poder hacer el cálculo!', 'Cálculo realizado con éxito!', 'Campos limpios y listos para hacer un nuevo cálculo!', 'No hay nada que calcular, tu capital es igual a tu meta!'];
+    
+    contenedor_alertas.innerHTML = `
+    <div class="alert ${colores_alertas[id_color]} alert-dismissible fade show my-2" role="alert">
+        <strong>${mensajes_alertas[id_mensaje]}</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true">&times;</span>
         </button>
     </div>
     `;
     setTimeout(function(){
-        contenedor_alertas.removeChild(contenedor_alertas.children[0])
+        if(contenedor_alertas.children[0]){
+            contenedor_alertas.removeChild(contenedor_alertas.children[0])
+        }
     }, 7500);
 }

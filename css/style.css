@@ -17,3 +17,6 @@ input {
 td span {
     font-size: 16px !important;
 }
+#contenedor-estrategia-binarias {
+    display: none;
+}
